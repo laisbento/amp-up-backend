@@ -2,13 +2,14 @@ const connection = require('../database/connection');
 
 module.exports = {
     async create(request, response) {
-        const { title, description, value } = request.body;
+        const { title, description, tipoNegocio, value } = request.body;
         const user_id = request.headers.authorization;
 
         const [id] = await connection('ads').insert({
             title,
             user_id,
             description,
+            tipoNegocio,
             value
         });
 
